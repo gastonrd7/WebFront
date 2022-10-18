@@ -2,7 +2,7 @@ import axios from "axios";
 
 const dataInitial = {
     infoInitial: []
-};
+}; 
 
 const GET_INFOBLOG_SUCCESS = 'GET_INFOBLOG_SUCCESS';
 
