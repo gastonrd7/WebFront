@@ -22,15 +22,14 @@ export default function homeReducer(state = dataInitial, action){
 export const getHomeAction = () => async(dispatch, getState) => {
     try {
         const resp = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=20`);
-        console.log(resp);
         dispatch({
             type: GET_INFOHOME_SUCCESS,
-            payload: resp.data.results
+            payload: resp.data.results.map(item => (
+                 {name: item.name, price: 100}
+                ))
         });
 
     } catch (error) {
         console.log(error);
     }
 };
-
-

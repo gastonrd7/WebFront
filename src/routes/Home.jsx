@@ -7,7 +7,11 @@ import {getHomeAction} from '../redux/HomeDucks';
 const Home = () => {
 
   const dispatch = useDispatch();
-  const selector = useSelector(store => store.Home.infoInitial);
+  const homeInfoInitial = useSelector(store => store.Home.infoInitial);
+
+  const addItemCard = (idName) => {
+    
+  }
 
   return (
     <h6>
@@ -16,15 +20,21 @@ const Home = () => {
         <button onClick={() => dispatch(getHomeAction())} className='btn btn-dark'>Get info about the customers</button>
       <div>
       <br />
+      <div style={ {width: '50%', float: 'left'} } >
         <ul>
           {
-              selector.map(item => (
+              homeInfoInitial.map(item => (
                 <li key={item.name}>
-                  {item.name} - {item.url}
+                  {item.name} - {item.price}
+                  <button onClick={() => addItemCard(item.name)}>Agregar</button>
                 </li>
               ))
           }
-        </ul>   
+        </ul>  
+      </div>
+      <div style={ {width: '50%'} } >
+        Carrito de compra
+      </div>
       </div>    
     </h6>   
   )
